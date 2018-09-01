@@ -4,9 +4,7 @@
 class Object {
 public:
 	std::string getType() const;
-	virtual std::string toString() const {
-		return "";
-	};
+	virtual std::string toString() const = 0;;
 
 private:
 	const std::string type;
@@ -18,7 +16,7 @@ public:
 	std::string getValue() const {
 		return value;
 	}
-	std::string toString() const {
+	std::string toString() const override {
 		return value;
 	}
 
@@ -33,7 +31,7 @@ public:
 	double getValue() const {
 		return value;
 	}
-	std::string toString() const {
+	std::string toString() const override {
 		return std::to_string(value);
 	}
 
@@ -46,10 +44,10 @@ private:
 class NilLiteral : public Object {
 public:
 	NilLiteral();
-	int getValue() const {
-		return NULL;
+	std::string getValue() const {
+		return "nil";
 	}
-	std::string toString() const {
+	std::string toString() const override {
 		return type;
 	};
 

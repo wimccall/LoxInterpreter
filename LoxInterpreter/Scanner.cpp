@@ -34,7 +34,7 @@ std::vector<Token> Scanner::scanTokens() {
 		scanToken();
 	}
 
-	tokens.push_back(Token(END_OF_FILE, std::string(""), NilLiteral(), line));
+	tokens.push_back(Token(END_OF_FILE, std::string(""), new NilLiteral(), line));
 	return tokens;
 }
 
@@ -118,10 +118,10 @@ char Scanner::advance() {
 }
 
 void Scanner::addToken(TokenType type) {
-	addToken(type, NilLiteral());
+	addToken(type, new NilLiteral());
 }
 
-void Scanner::addToken(TokenType type, Object literal) {
+void Scanner::addToken(TokenType type, Object* literal) {
 	std::string text = source.substr(start, (current- start));
 	tokens.push_back(Token(type, text, literal, line));
 }
@@ -162,7 +162,7 @@ void Scanner::string() {
 
 	// Trim the surrounding quotes
 	std::string value = source.substr(start + 1, current - 1);
-	addToken(STRING, StringLiteral(value));
+	addToken(STRING, new StringLiteral(value));
 }
 
 
@@ -177,7 +177,7 @@ void Scanner::number() {
 		while (isDigit(peek())) advance();
 	}
 
-	addToken(NUMBER, NumberLiteral(std::stod(source.substr(start, current))));
+	addToken(NUMBER, new NumberLiteral(std::stod(source.substr(start, current))));
 }
 
 void Scanner::identifier() {

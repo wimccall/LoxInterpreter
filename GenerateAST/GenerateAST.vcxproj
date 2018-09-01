@@ -20,15 +20,14 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{EF58509C-4D30-4725-9EEA-6444AAA40E35}</ProjectGuid>
+    <ProjectGuid>{911781DF-24DF-4D2F-A9D6-C10F2EBE3B9C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>LoxInterpreter</RootNamespace>
+    <RootNamespace>GenerateAST</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
-    <ProjectName>LoxInterpreter</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -85,7 +84,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
@@ -152,27 +151,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="DynamicTyping.h" />
-    <ClInclude Include="Expr.h" />
-    <ClInclude Include="Lox.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Scanner.h" />
-    <ClInclude Include="Token.h" />
-    <ClInclude Include="TokenType.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DynamicTyping.cpp" />
-    <ClCompile Include="Lox.cpp" />
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="GenerateAST.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Scanner.cpp" />
-    <ClCompile Include="Token.cpp" />
-    <ClCompile Include="TokenType.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
